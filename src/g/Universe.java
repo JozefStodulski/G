@@ -1,12 +1,22 @@
+/*
+
+Your nested loop was causing the problem. I've also placed gravity *really* low to slow things down enough to see what's happening.
+
+Also, if your particles collide head-on, they "merge" (become hidden behind one-another)
+
+Have fun debugging!
+
+*/
+
 package g;
 
 import java.util.Arrays;
 
 public class Universe {
 
-    static final Double g = 0.9;
+    static final Double g = .0001;
     static final int canvasSize = 700;
-    static final int particlesN = 100;
+    static final int particlesN = 30;
     
     public final Particle[] particles = new Particle[particlesN];
     final Double[][][] weights = new Double[particlesN][particlesN][2];
@@ -27,8 +37,9 @@ public class Universe {
         while (true) {
             
             //calculate weights loop
-            for (int i = 0; i < particlesN; i = i + 1) {
-                for (int j = i + 1; i < particlesN; i = i + 1) {
+            for (int i = 0; i < particlesN - 1; i = i + 1) {
+//                for (int j = i + 1; i < particlesN; i = i + 1) {
+                    int j = i + 1;
                     Double xDisplacement = particles[i].getXPosition() - particles[j].getXPosition();
                     Double yDisplacement = particles[i].getYPosition() - particles[j].getYPosition();
 
@@ -61,7 +72,7 @@ public class Universe {
                     this.weights[i][j][1] = yWeight;
                     this.weights[j][i][0] = -xWeight;
                     this.weights[j][i][1] = -yWeight;
-                }
+//                }
             }
             
             //update particle velocities & positions loop
