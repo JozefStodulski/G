@@ -72,8 +72,6 @@ public class Universe {
                     }
                     this.weights[p1][p2][0] = xWeight;
                     this.weights[p1][p2][1] = yWeight;
-                    this.weights[p2][p1][0] = -xWeight;
-                    this.weights[p2][p1][1] = -yWeight;
                 }
             }
             
