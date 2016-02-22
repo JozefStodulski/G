@@ -29,12 +29,8 @@ public class Particle {
     
     
     public void changeVelocity(Double x, Double y) {
-        if (x < 1.0 && x < 1.0) {
-            this.xVelocity = this.xVelocity + x;
-        }
-        if (y < 1.0 && y < 1.0) {
-            this.yVelocity = this.yVelocity + y;
-        }
+        this.xVelocity = this.xVelocity + x;
+        this.yVelocity = this.yVelocity + y;
     }
     
     public void updatePosition() {

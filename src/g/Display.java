@@ -27,14 +27,14 @@ public class Display extends JPanel {
         g.setColor(Color.WHITE);
         int i = 0;
         try {
-        for(; i < this.particles.length; i = i + 1) {
-            if (particles[i].getXPosition() > -this.size / 2 && particles[i].getXPosition() < this.size / 2
-                && particles[i].getYPosition() > -this.size / 2 && particles[i].getYPosition() < this.size / 2) {
-                
-                g.fillRect((int) Math.floor(particles[i].getXPosition() + this.size / 2),
-                           (int) Math.floor(particles[i].getYPosition() + this.size / 2), 1, 1);
-            }
-        } 
+            for(; i < this.particles.length; i = i + 1) {
+                if (particles[i].getXPosition() > -this.size / 2 && particles[i].getXPosition() < this.size / 2
+                    && particles[i].getYPosition() > -this.size / 2 && particles[i].getYPosition() < this.size / 2) {
+
+                    g.fillRect((int) Math.floor(particles[i].getXPosition() + this.size / 2),
+                               (int) Math.floor(particles[i].getYPosition() + this.size / 2), 1, 1);
+                }
+            } 
         } catch (NullPointerException npe) {
             System.out.println(i);
         }
