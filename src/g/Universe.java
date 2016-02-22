@@ -14,7 +14,7 @@ public class Universe {
 
     static final Double g = .0001;
     static final int canvasSize = 700;
-    static final int particlesN = 50;
+    static final int particlesN = 100;
     
     public final Particle[] particles = new Particle[particlesN];
     final Double[][][] weights = new Double[particlesN][particlesN][2];
@@ -45,7 +45,7 @@ public class Universe {
 
                     Double displacement = Math.sqrt(Math.pow(xDisplacement, 2.0)
                                                     + Math.pow(yDisplacement, 2.0));
-                    if (displacement < 2.0) {
+                    if (displacement < 1.5) {
                         continue;
                     }
                     Double weight = g / Math.pow(displacement, 2.0);
