@@ -10,11 +10,13 @@ Have fun debugging!
 
 package g;
 
+import java.util.Arrays;
+
 public class Universe {
 
-    static final Double g = .0001;
-    static final int canvasSize = 700;
-    static final int particlesN = 100;
+    static final Double g = .1;
+    static final int canvasSize = 900;
+    static final int particlesN = 1000;
     
     public final Particle[] particles = new Particle[particlesN];
     final Double[][][] weights = new Double[particlesN][particlesN][2];
@@ -30,6 +32,7 @@ public class Universe {
                 weights[i][j][1] = 0.0;
             }
         }
+        System.out.println(Arrays.toString(particles));
         
         //main loop
         while (true) {
@@ -40,8 +43,8 @@ public class Universe {
                     if (p2 == p1) {
                         continue;
                     }
-                    Double xDisplacement = particles[p1].getXPosition() - particles[p2].getXPosition();
-                    Double yDisplacement = particles[p1].getYPosition() - particles[p2].getYPosition();
+                    Double xDisplacement = particles[p2].getXPosition() - particles[p1].getXPosition();
+                    Double yDisplacement = particles[p2].getYPosition() - particles[p1].getYPosition();
 
                     Double displacement = Math.sqrt(Math.pow(xDisplacement, 2.0)
                                                     + Math.pow(yDisplacement, 2.0));
@@ -56,17 +59,19 @@ public class Universe {
                     if (xDisplacement != 0.0) {
                         angleI = Math.atan(yDisplacement / xDisplacement);
                         xWeight = weight * Math.cos(angleI);
-                        if (xDisplacement > 0.0) {
+                   
+                        yWeight = weight * Math.sin(angleI);     
+                        if (xDisplacement < 0.0) {
                             xWeight = -xWeight;
-                        }
-                        yWeight = weight * Math.sin(angleI);
-                        if (yDisplacement > 0.0) {
                             yWeight = -yWeight;
                         }
+//                        if (yDisplacement < 0.0) {
+//                            yWeight = -yWeight;
+//                        }
                     } else {
                         xWeight = 0.0;
                         yWeight = weight;
-                        if (yDisplacement > 0.0) {
+                        if (yDisplacement < 0.0) {
                             yWeight = -yWeight;
                         }
                     }
