@@ -14,7 +14,7 @@ import java.util.Arrays;
 
 public class Universe {
 
-    static final Double g = .1;
+    static final Double g = .01;
     static final int canvasSize = 900;
     static final int particlesN = 1000;
     
